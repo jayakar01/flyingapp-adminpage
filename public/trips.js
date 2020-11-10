@@ -63,17 +63,32 @@ function upload()
 $(document).ready(function(){
     $("this").on("click",".addplace",function(){
 
-        var name = <textarea id="placename" class="form-control" placeholder="Enter name of the place"></textarea>
-        var id = <textarea id="placeid" class="form-control" placeholder="Enter Id of the place"></textarea>
-        var info = <textarea id="placeinfo" class="form-control" placeholder="Enter details on the place"></textarea>
+        var pname = <textarea id="placename" class="form-control" placeholder="Enter name of the place"></textarea>
+        var pid = <textarea id="placeid" class="form-control" placeholder="Enter Id of the place"></textarea>
+        var pinfo = <textarea id="placeinfo" class="form-control" placeholder="Enter details on the place"></textarea>
 
-        $(".post-form").append(name);
-        $(".post-form").append(id);
-        $(".post-form").append(info);
+        $(".post-form").append(pname);
+        $(".post-form").append(pid);
+        $(".post-form").append(pinfo);
 
       });
     });
   });
+
+$(document).ready(function(){
+$("this").on("click",".addday",function(){
+
+    var dname = <textarea id="daynumber" class="form-control" placeholder="Enter number of day"></textarea>
+    var did = <textarea id="hotelname" class="form-control" placeholder="Enter name of Hotel"></textarea>
+    var dinfo = <textarea id="dayinfo" class="form-control" placeholder="Enter detailEnter details about things to do on that days on the place"></textarea>
+
+    $(".post-form").append(dname);
+    $(".post-form").append(did);
+    $(".post-form").append(dinfo);
+
+    });
+});
+});
 
 
 window.onload=function(){

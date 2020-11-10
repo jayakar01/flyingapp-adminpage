@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	
-        
+
+
         <!-- Stylesheets -->
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/font-awesome.min.css"/>
@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/owl.carousel.min.css"/>
         <link rel="stylesheet" href="css/animate.css"/>
         <link rel="stylesheet" href="css/style.css"/>
-        
+
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="shortcut icon"/>
 
@@ -26,7 +26,7 @@
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
         <title>Trips</title>
-        
+
 
     </head>
     <body >
@@ -60,9 +60,11 @@
                 <div class="container">
                     <!-- menu -->
                     <ul class="main-menu">
-                        <li><a href="home.html">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="trips.html">Trips</a></li>
+                        <li><a href="addtrips.html">Add Trips</a></li>
                         <li><a href="users.html">Users</a></li>
+                        <li><a href="groupchat.html">Group Chat</a></li>
                         </li>
                         <!--<li><a href="#">Pages</a>
                             <ul class="sub-menu">
@@ -90,6 +92,11 @@
                         <br>
                         <textarea id="price" class="form-control" placeholder="Enter the cost of the trip..."></textarea>
                         <br>
+                        <textarea id="days" class="form-control" placeholder="Enter number of days..."></textarea>
+                        <br>
+                        <textarea id="nights" class="form-control" placeholder="Enter number of nights..."></textarea>
+                        <br>
+
                         <input type="file" class="form-control" id="image" accept="images/*">
                         <br>
                         <div class="text-center">
@@ -109,13 +116,13 @@
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
 
-        
-        
+
+
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        
+
         <!-- js imports -->
         <script src="index.js"></script>
         <script src="trips.js"></script>

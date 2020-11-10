@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Firebase App is always required and must be first -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+
+        <!-- Add additional services that you want to use -->
+
+        <!-- Comment out (or don't include) services that you don't want to use -->
+        <!--- <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-storage.js"></script> -->
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="css/flaticon.css"/>
+        <link rel="stylesheet" href="css/slicknav.min.css"/>
+        <link rel="stylesheet" href="css/jquery-ui.min.css"/>
+        <link rel="stylesheet" href="css/owl.carousel.min.css"/>
+        <link rel="stylesheet" href="css/animate.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+
+    </head>
+
+
+    <body >
+        <!-- Header section -->
+        <header class="header-section">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 text-center text-lg-left">
+                            <!-- logo -->
+                            <a href="./index.html" class="site-logo">
+                                <h3 style="padding-top: 10px">NAME</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header><br><br>
+        <!-- Header section end -->
+
+        <div class="container">
+            <h2>Sign Up </h2><br>
+            <form name="SignUp" method="post">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                </div>
+                <div class="form-group">
+                    <label for="cpwd">Confirm Password:</label>
+                    <input type="confirmpassword" class="form-control" id="cpwd" placeholder="Enter password again" name="cpswd">
+                </div>
+                <div class="form-group" id="shop">
+                    <label>Name of Agency:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter Agency Name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="area">Select Area:</label>
+                    <select class="form-control" id="area" name="area">
+                        <option>India</option>
+                        <option>Outside India</option>
+                    </select>
+                </div>
+                <br>
+                <button id="btn-submit" type="button" class="btn btn-primary">Submit</button>
+            </form>
+            <br><br>
+            <span><h4>Already have an account? </h4><a href="Login.html">Login</a></span>
+        </div>
+
+
+        <script src="index.js"></script>
+
+        <script>
+            firebase.auth().onAuthStateChanged(function (user) {
+                if(user)
+                {
+                    window.location.href = "index.html";
+                }
+            });
+        </script>
+
+        
+        <br><br>
+    </body>
+</html>

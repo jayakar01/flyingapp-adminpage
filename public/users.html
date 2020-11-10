@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+
+        <title>Users</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
+    
+    <!-- js imports -->
+    <script src="index.js"></script>
+
+	<script>
+		var config = {
+			apiKey: "AIzaSyA1rb94ogzrZovpB-I9b2ubdEDB4nCkVWg",
+            authDomain: "flying-9a412.firebaseapp.com",
+            databaseURL: "https://flying-9a412.firebaseio.com",
+            projectId: "flying-9a412",
+            storageBucket: "flying-9a412.appspot.com",
+            messagingSenderId: "506823684139",
+            appId: "1:506823684139:web:e245849a4966384d3efa6e",
+            measurementId: "G-4XGB6ESPWW"
+		};
+
+		firebase.initializeApp(config);
+		var db = firebase.firestore();
+		var auth = firebase.auth() ;
+
+	</script>
+
+	<title>Flying App</title>
+	<meta charset="UTF-8">
+	<meta name="description" content=" Divisima | eCommerce Template">
+	<meta name="keywords" content="divisima, eCommerce, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="shortcut icon"/>
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/flaticon.css"/>
+	<link rel="stylesheet" href="css/slicknav.min.css"/>
+	<link rel="stylesheet" href="css/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="css/owl.carousel.min.css"/>
+	<link rel="stylesheet" href="css/animate.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+
+    </head>
+    <body >
+
+        <div id="preloder">
+            <div class="loader"></div>
+        </div>
+
+        <!-- Header section -->
+        <header class="header-section">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 text-center text-lg-left">
+                            <!-- logo -->
+                            <a href="./index.html" class="site-logo">
+                                <h3 style="padding-top: 10px">Flying App</h3>
+                            </a>
+                        </div>
+                        <div class="col-xl-5 col-lg-10">
+
+                        </div>
+                        <div class="col-xl-5 col-lg-10">
+                            <a class="LogOut" id="btn-logout">Log Out</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <nav class="main-navbar">
+                <div class="container">
+                    <!-- menu -->
+                    <ul class="main-menu">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="trips.html">Trips</a></li>
+                        <li><a href="users.html">Users</a></li>
+                        </li>
+                        <!--<li><a href="#">Pages</a>
+                            <ul class="sub-menu">
+                                <li><a href="./product.html">Product Page</a></li>
+                                <li><a href="./category.html">Category Page</a></li>
+                                <li><a href="./cart.html">Cart Page</a></li>
+                                <li><a href="./checkout.html">Checkout Page</a></li>
+                                <li><a href="./contact.html">Contact Page</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Blog</a></li> -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <form id="post-form">
+                        <center><h3>Add User</h3></center>
+                        <textarea id="name" class="form-control" placeholder="Enter name of the customer..."></textarea>
+                        <br>
+                        <textarea id="req" class="form-control" placeholder="Enter name of the requested trip..."></textarea>
+                        <br>
+                        <textarea id="email" class="form-control" placeholder="Enter email id of the customer..."></textarea>
+                        <br>
+                        <textarea id="phone" class="form-control" placeholder="Enter phone no. of the customer..."></textarea>
+                        <br>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-success" onclick="upload()">Upload</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-4" id="posts">
+
+            </div>
+        </div>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first...make sure you remove -app from below line -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDfQal5qQ3zS3DA21oeTrRAonislCWuX68",
+            authDomain: "blogs-233c7.firebaseapp.com",
+            databaseURL: "https://blogs-233c7.firebaseio.com",
+            projectId: "blogs-233c7",
+            storageBucket: "blogs-233c7.appspot.com",
+            messagingSenderId: "960693622725",
+            appId: "1:960693622725:web:325e29579c6c3dc4d91dac",
+            measurementId: "G-3MPBFX087D"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        </script>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="users.js"></script>
+
+        <!-- Footer section -->
+        <section class="footer-section">
+            <div class="social-links-warp">
+                <div class="container">
+                    <div class="social-links">
+                        <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+                        <a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
+                        <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+                        <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+                        <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+                        <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+                        <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer section end -->
+
+
+
+        <!--====== Javascripts & Jquery ======-->
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.slicknav.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.nicescroll.min.js"></script>
+        <script src="js/jquery.zoom.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/main.js"></script>
+
+
+    </body>
+</html>

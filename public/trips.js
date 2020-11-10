@@ -60,6 +60,22 @@ function upload()
 
 }
 
+$(document).ready(function(){
+    $("this").on("click",".addplace",function(){
+
+        var name = <textarea id="placename" class="form-control" placeholder="Enter name of the place"></textarea>
+        var id = <textarea id="placeid" class="form-control" placeholder="Enter Id of the place"></textarea>
+        var info = <textarea id="placeinfo" class="form-control" placeholder="Enter details on the place"></textarea>
+
+        $(".post-form").append(name);
+        $(".post-form").append(id);
+        $(".post-form").append(info);
+
+      });
+    });
+  });
+
+
 window.onload=function(){
     this.getdata();
     console.log('I AM HERE !!')
@@ -77,7 +93,7 @@ function getdata()
       posts_div.innerHTML="";
       //get data from firebase
       var data=snapshot.docs;
-      
+
       //now pass this data to our posts div
       //we have to pass our data to for loop to get one by one
       //we are passing the key of that post to delete it from database
@@ -94,10 +110,10 @@ function getdata()
                         <p class='card-text'>
                             ${trip.destination}
                         </p>
-                        
+
                         <!-- Trigger the modal with a button -->
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal${trip.tripID}">View</button>
-                        
+
                         <!-- Modal -->
                         <div id="myModal${trip.tripID}" class="modal fade" role="dialog">
                             <div class="modal-dialog">
@@ -119,11 +135,11 @@ function getdata()
                                                         </button>
                                                         </h5>
                                                     </div>
-                                            
+
                                                     <div id="collapseOne${trip.tripID}" class="collapse show" aria-labelledby="headingOne${trip.tripID}" data-parent="#accordion${trip.tripID}">
                                                         <div class="card-body">
                                                             <img src="${trip.url}" style="height:250px;"><br><br>
-                                                            <p> 
+                                                            <p>
                                                                 <b>Trip-Id:</b> ${trip.tripID}</p>
                                                             <p> Fare: ${trip.fare}</p>
                                                             <p> Days: ${trip.days}</p>
@@ -167,8 +183,8 @@ function getdata()
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                        </div> 
+
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -201,19 +217,19 @@ function getdata()
                                 </button>
                             </h5>
                         </div>
-                    
+
                         <div id="pcollapse${place.id}" class="collapse show" aria-labelledby="place${place.id}" data-parent="#placesAccordion">
                             <div class="card-body">
                                 <img src="${place.url}" style="height:250px;"><br><br>
-                                <p> 
+                                <p>
                                     <b>Place Id:</b> ${place.placeID}</p>
                                 <b> Place Info:</b>
                                 <p> ${place.info}</p>
                             </div>
                         </div>
                     </div>
-                    
-                    `; 
+
+                    `;
                     placesHtml += placeLi;
                 });
                 placesHtml += '</div>'
@@ -221,17 +237,17 @@ function getdata()
             }
           });
 
-          
+
           html += li;
 
         });
-        
+
 
         posts_div.innerHTML = html
       } else {
         posts_div.innerHTML = '<h5 class="center-align">No Trips to show</h5>';
       }
-    
+
     });
 }
 

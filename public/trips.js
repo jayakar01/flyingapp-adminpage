@@ -63,39 +63,38 @@ function upload()
 $(document).ready(function(){
     $("this").on("click",".addplace",function(){
 
-        var pname = <textarea id="placename" class="form-control" placeholder="Enter name of the place"></textarea>
-        var pid = <textarea id="placeid" class="form-control" placeholder="Enter Id of the place"></textarea>
-        var pinfo = <textarea id="placeinfo" class="form-control" placeholder="Enter details on the place"></textarea>
+        var pname = '<textarea id="placename" class="form-control" placeholder="Enter name of the place"></textarea>'
+        var pid = '<textarea id="placeid" class="form-control" placeholder="Enter Id of the place"></textarea>'
+        var pinfo = '<textarea id="placeinfo" class="form-control" placeholder="Enter details on the place"></textarea>'
 
         $(".post-form").append(pname);
         $(".post-form").append(pid);
         $(".post-form").append(pinfo);
 
-      });
-    });
-  });
-
-$(document).ready(function(){
-$("this").on("click",".addday",function(){
-
-    var dname = <textarea id="daynumber" class="form-control" placeholder="Enter number of day"></textarea>
-    var did = <textarea id="hotelname" class="form-control" placeholder="Enter name of Hotel"></textarea>
-    var dinfo = <textarea id="dayinfo" class="form-control" placeholder="Enter detailEnter details about things to do on that days on the place"></textarea>
-
-    $(".post-form").append(dname);
-    $(".post-form").append(did);
-    $(".post-form").append(dinfo);
-
     });
 });
+
+$(document).ready(function(){
+    $("this").on("click",".addday",function(){
+
+        var dname = '<textarea id="daynumber" class="form-control" placeholder="Enter number of day"></textarea>'
+        var did = '<textarea id="hotelname" class="form-control" placeholder="Enter name of Hotel"></textarea>'
+        var dinfo = '<textarea id="dayinfo" class="form-control" placeholder="Enter detailEnter details about things to do on that days on the place"></textarea>'
+
+        $(".post-form").append(dname);
+        $(".post-form").append(did);
+        $(".post-form").append(dinfo);
+
+
+    });
+    console.log('Edit is existing..');
 });
 
 
 window.onload=function(){
     this.getdata();
     console.log('I AM HERE !!')
-}
-
+};
 
 function getdata()
 {
@@ -112,7 +111,7 @@ function getdata()
       //now pass this data to our posts div
       //we have to pass our data to for loop to get one by one
       //we are passing the key of that post to delete it from database
-      if (data.length) {
+      if(data.length) {
         let html = '';
         data.forEach(doc => {
           const trip = doc.data();
@@ -136,7 +135,8 @@ function getdata()
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">${trip.destination}</h4>
+                                        <h4 class="modal-title">${trip.destination}
+                                        </h4>
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
                                     <div class="modal-body" >
@@ -153,19 +153,44 @@ function getdata()
 
                                                     <div id="collapseOne${trip.tripID}" class="collapse show" aria-labelledby="headingOne${trip.tripID}" data-parent="#accordion${trip.tripID}">
                                                         <div class="card-body">
+                                                            <p><div class="text-center btn btn-primary" onclick = "update_trip_data(${trip.tripID})">
+                                                                Update Trip Info
+                                                            </div>
+                                                            </p>
                                                             <img src="${trip.url}" style="height:250px;"><br><br>
-                                                            <p>
-                                                                <b>Trip-Id:</b> ${trip.tripID}</p>
-                                                            <p> Fare: ${trip.fare}</p>
-                                                            <p> Days: ${trip.days}</p>
-                                                            <p> Nights: ${trip.nights}</p>
-                                                            <p> Total Places: ${trip.totalplaces}</p>
-                                                            <p> Contact 1: ${trip.contact1}</p>
-                                                            <p> Contact 2: ${trip.contact2}</p>
+                                                            <p> (Click on the area to edit, click on update button to update the trip details.) </p>
+                                                            <p> Trip-Id: <span id ="tripID${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.tripID}
+                                                            </span></p>
+                                                            <p> Trip Name: <span id = "destination${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.destination}
+                                                            </span>
+                                                            <p> Fare: <span id = "fare${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.fare}
+                                                            </span></p>
+                                                            <p> Days: <span id = "days${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.days}
+                                                            </span></p>
+                                                            <p> Nights: <span id = "nights${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.nights}
+                                                            </span></p>
+                                                            <p> Total Places: <span id = "totalplaces${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.totalplaces}
+                                                            </span></p>
+                                                            <p> Contact 1: <span id = "contact1${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.contact1}
+                                                            </span></p>
+                                                            <p> Contact 2: <span id = "contact2${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.contact2}
+                                                            </span></p>
                                                             <b> First Paragraph:</b>
-                                                            <p> ${trip.info1}</p>
+                                                            <p> <span id = "info1${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.info1}
+                                                            </span></p>
                                                             <b> Second Paragraph:</b>
-                                                            <p> ${trip.info2}</p><br><br>
+                                                            <p> <span id = "info2${trip.tripID}" class="input" role="textbox" contenteditable>
+                                                            ${trip.info2}
+                                                            </span></p><br><br>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -211,7 +236,10 @@ function getdata()
                         <button class="btn btn-danger" id="key${trip.tripID}" onclick="delete_post(${trip.destnation}">Delete</button>
                     </div>
                 </div>
-            </div>`
+            </div>
+            `
+          
+          
           db.collection(`trips/${trip.destination}/places`).onSnapshot(function(placesCollection)
           {
             var places_div = document.getElementById(`places${trip.tripID}`);
@@ -222,7 +250,7 @@ function getdata()
                 `;
                 placesData.forEach(placeDoc => {
                     const place = placeDoc.data();
-                    console.log(place);
+                    //console.log(place);
                     var placeLi = `
                     <div class="card">
                         <div class="card-header" id="place${place.id}">
@@ -248,10 +276,81 @@ function getdata()
                     placesHtml += placeLi;
                 });
                 placesHtml += '</div>'
-                places_div.innerHTML = placesHtml
+                places_div.innerHTML = placesHtml;
             }
           });
+          
+          var day_num = 1, num_of_days = parseInt(trip.days);
+          console.log(num_of_days);
+          
+        //   var daywiseSchedule_div_main = document.getElementById(`days${trip.tripID}`);
+        //   var daywiseSchedule_div = `<br>`;
+          while(day_num <= num_of_days){
+            console.log(day_num);
+            db.collection(`trips/${trip.destination}/day${day_num}`).onSnapshot(function(dayCollection)
+            { 
+                var day_wise_schedule = document.getElementById(`days${trip.tripID}`);;
+                var dayData = dayCollection.docs;
+                if(dayData.length){
+                    let dayHtml = `
+                        <div id="day${day_num}Accordion">
+                    `;
+                    dayData.forEach(dayDoc => {
+                        const hotel = dayDoc.data();
+                        //console.log(place);
+                        var hotelLi = `
+                        <div class="card">
+                            <div class="card-header" id="hotel${hotel.order}">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#dcollapse${hotel.order}" aria-expanded="false" aria-controls="aria-controls="dcollapse${hotel.order}">
+                                    ${hotel.name}
+                                    </button>
+                                </h5>
+                            </div>
 
+                            <div id="dcollapse${hotel.order}" class="collapse show" aria-labelledby="hotel${hotel.order}" data-parent="#day${day_num}Accordion">
+                                <div class="card-body">
+                                    
+                                    <p>
+                                        <b>Name :</b> ${hotel.name}</p>
+                                    <b> Details:</b>
+                                    <b> Details:</b>
+                                    <p> ${hotel.details}</p>
+                                    <b> Time : </b>
+                                    <p> ${hotel.time} </p>
+                                    <b> Order: </b>
+                                    <p> ${hotel.order} </p>
+                                    <b> Menu : </b>
+                                    <p id = menupic${hotel.order}> Not provided </p>
+                                    <b> Icon : </b>
+                                    <p> ${hotel.icon} </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        `;
+                        dayHtml += hotelLi;
+                        if(hotel.menu){
+                            document.getElementById(`menupic${hotel.order}`).innerhtml = `
+                                <div>
+                                    <img src="${place.url}" style="height:250px;"><br><br>
+                                </div>
+                                `;
+                        }
+                    });
+                    dayHtml += `</div>`;
+                    daywiseSchedule_div.innerHTML = dayHtml;
+
+                }
+            });
+
+            day_num+=1;
+          }
+        //   if(num_of_days){
+        //       daywiseSchedule_div_main.innerHTML = daywiseSchedule_div;
+        //   }
+
+          
 
           html += li;
 
@@ -271,3 +370,11 @@ function delete_post(key){
     getdata();
 
 }
+
+function update_trip_data(tripID){
+    console.log(tripID);
+    db.collection(trips).doc(tripID);
+    //update function did not work -- need to add again here set value in firestore..
+}
+
+

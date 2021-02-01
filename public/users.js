@@ -56,6 +56,7 @@ window.onload=function(){
 
 function getdata()
 {
+    
     firebase.database().ref('blogs/').once('value').then(function(snapshot)
     {
         //get your posts div
